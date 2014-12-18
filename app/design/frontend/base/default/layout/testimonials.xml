@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <default>
+        <reference name="root">
+            <block type="core/template" name="testimonials" as="testimonials" template="testimonials/testimonials.phtml" after="content" />
+        </reference>
+    </default>
+</layout>

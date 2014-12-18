@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Webmn_Testimonials>
+      <version>0.1.3</version>
+    </Webmn_Testimonials>
+  </modules>
+  <global>
+    <helpers>
+      <testimonials>
+        <class>Webmn_Testimonials_Helper</class>
+      </testimonials>
+    </helpers>
+	<blocks>
+	  <testimonials>
+		<class>Webmn_Testimonials_Block</class>
+	  </testimonials>
+	</blocks>
+	<models>
+	  <testimonials>
+		<class>Webmn_Testimonials_Model</class>
+		<resourceModel>testimonials_mysql4</resourceModel>
+	  </testimonials>
+	  <testimonials_mysql4>
+		<class>Webmn_Testimonials_Model_Mysql4</class>
+		<entities>		  
+			  <testimony>
+				<table>testimony</table>
+			  </testimony>
+        </entities>
+	  </testimonials_mysql4>
+	</models>
+	<resources>
+	  <testimonials_setup>
+		<setup>
+		  <module>Webmn_Testimonials</module>
+		</setup>
+		<connection>
+		  <use>core_setup</use>
+		</connection>
+	  </testimonials_setup>
+	  <testimonials_write>
+		<connection>
+		  <use>core_write</use>
+		</connection>
+	  </testimonials_write>
+	  <testimonials_read>
+		<connection>
+		  <use>core_read</use>
+		</connection>
+	  </testimonials_read>
+	</resources>
+  </global>
+  <frontend>
+    <layout>
+      <updates>
+        <testimonials>
+          <file>testimonials.xml</file>
+        </testimonials>
+      </updates>
+    </layout>       
+  </frontend>
+  <admin>
+	<routers>
+	  <testimonials>
+	    <use>admin</use>
+		<args>
+		  <module>Webmn_Testimonials</module>
+		  <frontName>admin_testimonials</frontName>
+		</args>
+	  </testimonials>
+	</routers>
+  </admin>
+  <adminhtml>
+	<menu>
+	  <testimonials module="testimonials">
+		<title>Testimonials</title>
+		<sort_order>70</sort_order>
+		<children>
+		  <testimony module="testimonials">
+		    <title>Manage Testimony</title>
+			<sort_order>0</sort_order>
+			<action>admin_testimonials/adminhtml_testimony</action>
+		  </testimony>
+		</children>
+		<children>
+		  <testimonials module="testimonials">
+		    <title>Import Testimonies</title>
+			<sort_order>1</sort_order>
+			<action>admin_testimonials/adminhtml_testimonials</action>
+		  </testimonials>
+		</children>
+	  </testimonials>
+	</menu>
+	<acl>
+	  <resources>
+		<all>
+		  <title>Allow Everything</title>
+		</all>
+		<admin>
+		  <children>
+			<testimonials translate="title" module="testimonials">
+			  <title>Testimonials</title>
+			  <sort_order>1000</sort_order>
+			  <children>
+				  <testimony translate="title">
+					<title>Manage Testimony</title>
+					<sort_order>0</sort_order>
+				  </testimony>
+			  </children>
+			</testimonials>
+		  </children>
+		</admin>
+	  </resources>
+	</acl>
+	<layout>
+	  <updates>
+		<testimonials>
+		  <file>testimonials.xml</file>
+		</testimonials>
+	  </updates>
+	</layout>
+  </adminhtml>
+</config> 

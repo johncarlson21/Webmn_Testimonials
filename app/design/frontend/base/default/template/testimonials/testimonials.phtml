@@ -1,0 +1,79 @@
+<?php
+
+$testimonials = Mage::getModel('testimonials/testimony')->getTestimonials();
+$first_image = '';
+$media_folder = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA)."/";
+$i=0;
+foreach($testimonials as $t) {
+	if ($i == 0) {
+		$first_image = $media_folder.$t->getTestimonyFilename();
+	}
+	
+	/*echo "<p>Name: ".$t->getTestimonyName()."<br />".
+		"Filename: ".$t->getTestimonyFilename()."<br />".
+		"Thumb: ".$t->getTestimonyThumb()."<br />".
+		"Headline: ".$t->getTestimonyHeadline()."<br />".
+		"Description: ".$t->getTestimonyDescription()."<br />".
+		"Type: ".$t->getTestimonyType()."<br />".
+		"Mural: ".$t->getTestimonyMural()."<br />".
+		"URL: ".$t->getTestimonyUrl()."</p>";*/
+		
+	if ($t->getTestimonyType() == 'B') {
+        $type_d = ' class="business"';
+    } else if ($type == 'R') {
+        $type_d = ' class="residential"';
+    }
+		
+	$output .= "<li".$type_d."><a href='#'><img class=\"gallery-thumb\" src=\"".$media_folder.$t->getTestimonyThumb()."\" alt=\"".$t->getTestimonyName()."\" data-large=\"".$media_folder.$t->getTestimonyFilename()."\" data-headline=\"".$t->getTestimonyHeadline()."\" data-author=\"".$t->getTestimonyName()."\" data-description=\"".$t->getTestimonyDescription()."\" data-mural=\"".$t->getTestimonyMural()."\" data-product-url=\"".$t->getTestimonyUrl()."\"/></a></li>\n";
+	$i++;
+}
+
+?>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<div id="main-gallery-holder" style="position:relative;">
+    <div id="slider-arrow-left" data-back="" class="sliderArrows"></div>
+    <div id="slider-arrow-right" data-next="" class="sliderArrows"></div>
+    <img src="<?php echo $first_image;?>" id="main-gallery-image" alt=""  width=640>
+    <div id="main-gallery-text">
+        <h3 class="header2" id="gallery-headline" style='margin-bottom:-1px'></h3>
+        <p id="gallery-quote"></p>
+        <div id="gallery-author-holder" >
+            <h5 class="header2" id="gallery-author"></h5>
+            <h8 class="header8" id="gallery-mural" style='font-color:black;font-style:italic;font-size:80%'></h8>
+        </div>
+        <div id="gallery-read-more"><span id="gallery-read-more-link">READ MORE...</span></div>
+        <div class="modal hide fade" id="readMoreModal">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="header2" id="modalQuoteHeadline"></h3>
+            </div>
+            <div class="modal-body" id='readMoreModalBody'></div>
+            <div class="modal-footer header2" id="readMoreModalAuthor"></div>
+            <div class="modal-footer header8" id="readMoreModalMural"></div>
+            <div>&nbsp;</div>
+        </div>
+    </div>
+</div>
+<div class="clear-both"></div>
+
+<!-- THUMBNAILS -->
+<h3 class="header3"> <span class="gallery-header" id="gallery-header-view-all">View All</span> <span class="gallery-header gallery-disabled" id="gallery-header-business"> Business Gallery</span> <span class="gallery-header gallery-disabled" id="gallery-header-residential"> Residential Gallery</span> </h3>
+<div id="thumb-holder">
+    <div class="arrow-holder">
+        <div class="left-arrow disabled-arrow" id="thumbs-back"></div>
+    </div>
+    <div id="gallery-thumb-holder">
+        <ul id="gallery-thumbs">
+            <?php
+			// output thumbnails
+			echo $output;
+			?>
+        </ul>
+    </div>
+    <div class="arrow-holder">
+        <div class="right-arrow" id="thumbs-forward" ></div>
+    </div>
+</div>
+
