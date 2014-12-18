@@ -20,7 +20,7 @@ foreach($testimonials as $t) {
 		
 	if ($t->getTestimonyType() == 'B') {
         $type_d = ' class="business"';
-    } else if ($type == 'R') {
+    } else if ($t->getTestimonyType() == 'R') {
         $type_d = ' class="residential"';
     }
 		

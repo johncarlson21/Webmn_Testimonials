@@ -1,7 +1,7 @@
 <p>Use this form to import multiple Testimonials at a time.</p>
 <p>Zip your image files along with your import.csv file, then click the &quot;Browse&quot; button, select it, and click "Import"!</p>
 
-<form method="POST" name="import_form" action="<?php echo Mage::helper("adminhtml")->getUrl("*/*/edit");?>" enctype="multipart/form-data">
+<form method="POST" name="import_form" action="<?php echo Mage::helper("adminhtml")->getUrl("*/*/import");?>" enctype="multipart/form-data">
 	<p>Import File: <input type="file" name="import_file" id="import_file" /></p>
     <p><input type="submit" name="submit" value="Import" /></p>
 </form>
