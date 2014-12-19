@@ -28,15 +28,15 @@ class Webmn_Testimonials_Adminhtml_TestimonialsController extends Mage_Adminhtml
 			$this->renderLayout();
 		}
 		
-		/*public function fixorderAction() {
+		public function fixorderAction() {
 			$testimonials = Mage::getModel('testimonials/testimony')->getTestimonialsASC();
-			$z = 355;
+			$z = 1;
 			foreach($testimonials as $t) {
 				$t->setTestimonyOrder($z);
 				$t->save();
-				$z--;
+				$z++;
 			}
-		}*/
+		}
 		
 		public function importsaveAction() {
 			try {
