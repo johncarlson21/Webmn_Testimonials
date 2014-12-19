@@ -42,12 +42,17 @@ class Webmn_Testimonials_Block_Adminhtml_Testimony_Edit_Tab_Form extends Mage_Ad
 						"name" => "testimony_description",
 						));
 					
-						$fieldset->addField("testimony_type", "text", array(
+						//$fieldset->addField("testimony_type", "text", array(
+						$fieldset->addField("testimony_type", "select", array(
 						"label" => Mage::helper("testimonials")->__("Type"),					
 						"class" => "required-entry",
 						"required" => true,
 						"name" => "testimony_type",
+						"value" => "R",
+						"values" => array('-1'=>"Please Select..", "R"=>"Residential", "B"=>"Business")
 						));
+						
+						
 					
 						$fieldset->addField("testimony_mural", "text", array(
 						"label" => Mage::helper("testimonials")->__("Mural"),
@@ -57,6 +62,11 @@ class Webmn_Testimonials_Block_Adminhtml_Testimony_Edit_Tab_Form extends Mage_Ad
 						$fieldset->addField("testimony_url", "text", array(
 						"label" => Mage::helper("testimonials")->__("URL"),
 						"name" => "testimony_url",
+						));
+						
+						$fieldset->addField("testimony_order", "text", array(
+						"label" => Mage::helper("testimonials")->__("Order"),
+						"name" => "testimony_order",
 						));
 
 				if (Mage::getSingleton("adminhtml/session")->getTestimonyData())

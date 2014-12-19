@@ -7,8 +7,8 @@ class Webmn_Testimonials_Block_Adminhtml_Testimony_Grid extends Mage_Adminhtml_B
 		{
 				parent::__construct();
 				$this->setId("testimonyGrid");
-				$this->setDefaultSort("testimony_id");
-				$this->setDefaultDir("DESC");
+				$this->setDefaultSort("testimony_order");
+				$this->setDefaultDir("ASC");
 				$this->setSaveParametersInSession(true);
 		}
 
@@ -47,6 +47,10 @@ class Webmn_Testimonials_Block_Adminhtml_Testimony_Grid extends Mage_Adminhtml_B
 				$this->addColumn("testimony_url", array(
 				"header" => Mage::helper("testimonials")->__("URL"),
 				"index" => "testimony_url",
+				));
+				$this->addColumn("testimony_order", array(
+				"header" => Mage::helper("testimonials")->__("Order"),
+				"index" => "testimony_order",
 				));
 			$this->addExportType('*/*/exportCsv', Mage::helper('sales')->__('CSV')); 
 			$this->addExportType('*/*/exportExcel', Mage::helper('sales')->__('Excel'));

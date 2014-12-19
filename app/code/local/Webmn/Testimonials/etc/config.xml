@@ -78,17 +78,17 @@
 		<sort_order>70</sort_order>
 		<children>
 		  <testimony module="testimonials">
-		    <title>Manage Testimony</title>
+		    <title>Manage Testimonies</title>
 			<sort_order>0</sort_order>
 			<action>admin_testimonials/adminhtml_testimony</action>
 		  </testimony>
 		</children>
 		<children>
-		  <testimonials module="testimonials">
-		    <title>Import Testimonies</title>
+		  <testimonials_import>
+		  	<title>Import Testimonies</title>
 			<sort_order>1</sort_order>
-			<action>admin_testimonials/adminhtml_testimonials</action>
-		  </testimonials>
+			<action>admin_testimonials/adminhtml_testimonials/import</action>
+		  </testimonials_import>
 		</children>
 	  </testimonials>
 	</menu>
