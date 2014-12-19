@@ -10,11 +10,7 @@ class Webmn_Testimonials_Adminhtml_TestimonialsController extends Mage_Adminhtml
 		
 		public function indexAction() 
 		{
-			    $this->_title($this->__("Testimonials"));
-			    $this->_title($this->__("Import Testimonies"));
-
-				$this->_initAction();
-				$this->renderLayout();
+			    $this->_redirect('testimonials/adminhtml_testimony/index');
 		}
 		
 		public function importAction() {
